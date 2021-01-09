@@ -1,15 +1,3 @@
-firebase.auth().onAuthStateChanged(function(user)
-{
-    if (user)
-    {
-        //TODO: something when user is logged in
-        window.alert("User signed in successfully!");
-    }
-    else
-    {
-        //TODO: something when no user logged in
-    }
-});
 function register()
 {
     var inputName = document.getElementById("inputName").value;
@@ -22,7 +10,16 @@ function register()
     }
     else
     {
-        window.alert("User registered successfully!");
+        firebase.auth().createUserWithEmailAndPassword(inputEmail, inputPass)
+        .then((user) => {
+            window.alert("User registered successfully!");
+            window.location.href='/index.html';
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ..
+        });
     }
 }
 
@@ -30,9 +27,10 @@ function signin()
 {
     var inputEmail = document.getElementById("inputEmail").value;
     var inputPass = document.getElementById("inputPassword").value;
-
+    
     firebase.auth().signInWithEmailAndPassword(inputEmail, inputPass).then((user) => {
-        
+        console.log("success");
+        window.location.href='/index.html';
     })
     .catch((error) => {
         var errorCode = error.code;
@@ -40,5 +38,6 @@ function signin()
 
         window.alert("Error:" + errorMessage )
     });
-
 }
+
+//TODO: get userid change signin to signout, hide sign up button
