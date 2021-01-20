@@ -5,13 +5,13 @@
         $email = $_POST['email'];
         $pass = $_POST['password'];
 
-        $search = mysqli_query($db, "SELECT * FROM `admin` WHERE ANAME='".$email."' AND  APASS='".$pass."'");
-        $sess = mysqli_query($db, "SELECT ANAME FROM `admin` WHERE ANAME='".$email."' AND  APASS='".$pass."'");
-        $match = mysqli_num_rows($search);
-
-        if($match > 0)
+        $search = mysqli_query($db, "SELECT * FROM USER WHERE `EMAIL`='".$email."' AND  `PASSWORD`='".$pass."'");
+        $result = mysqli_fetch_row($search);
+        if($result != NULL)
         {
             $_SESSION['loggedin'] = true;
+            $_SESSION['user'] = $result[3];
+            $_SESSION['username'] = $result[2];
             header('Location: adminpage.php');
         }
         else

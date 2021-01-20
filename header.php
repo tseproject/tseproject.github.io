@@ -10,9 +10,6 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            
-            
-            
             <?php
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)
                 {

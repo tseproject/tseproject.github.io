@@ -11,37 +11,25 @@
 
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a href="index.php" class="navbar-brand">Restaurant Name</a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMenu">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="item.php" class="nav-link">Item</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="aboutus.php" class="nav-link">About Us</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="signin.php" class="nav-link">Sign In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="signup.php" class="nav-link">Sign Up</a>
-                    </li>
-                </ul> 
-            </div>
-        </nav>
+        <?php include 'header.php'?>
  
         <div class="container mt-1">
             <div class="jumbotron">
                 <h1 class="display-8">Item List</h1>
             </div>
             <button type="button" class="btn btn-primary">Add Item</button>
+            <?php
+                if (isset($_SESSION['user']) && $_SESSION['user'] === "1") //admin
+                {
+                    echo 'hi admin';
+                }
+                else
+                {
+                    echo 'hi staff';
+                }
+            ?>
 
+            <!-- TODO: mysqli_fetch_assoc, foreach create css card, take from items -->
             <div class="row mt-2">
                 <div class="col-md-5">
                     <div class="card mb-2">

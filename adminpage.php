@@ -18,6 +18,7 @@
                 <div class="container mt-1">
                     <div class="jumbotron">
                         <h1 class="display-8">Admin Page</h1>
+                        <h5>Hi <?php echo $_SESSION['username'];?></h5>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Go to Items</h5>

@@ -20,8 +20,10 @@
             {
                 $_SESSION['user'] = 0; //staff
             }
-            header('Location: adminpage.php');
-            echo '<script>alert("User registered successfully! Please sign in with your new account.");</script>';
+            // header('Location: adminpage.php');
+            echo '<script>alert("User registered successfully!");
+            </script>';
+            echo '<script>window.location.href="adminpage.php";</script>';
         }
         else
         {
