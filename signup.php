@@ -10,30 +10,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a href="index.php" class="navbar-brand">Restaurant Name</a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMenu">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="item.php" class="nav-link">Item</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="aboutus.php" class="nav-link">About Us</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="signin.php" class="nav-link">Sign In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="signup.php" class="nav-link">Sign Up</a>
-                    </li>
-                </ul> 
-            </div>
-        </nav>
+        <?php include 'header.php'?>
         <br>
         <br>
         <br>
@@ -44,29 +21,31 @@
                 <div class="card card-signin my-5">
                   <div class="card-body">
                     <h5 class="card-title text-center">Sign Up</h5>
-                    <div class="form-label-group">
-                        <label for="inputName">Name</label>
-                        <input type="name" id="inputName" class="form-control" placeholder="Name" required>
-                    </div>
-                    <div class="form-label-group">
-                        <label for="inputEmail">Email address</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                    </div>
-    
-                    <div class="form-label-group">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    </div>
-                    <div class="form-label-group mt-2">
-                        <label for="inputPosition">Position</label>
-                        <select name="position" id="inputPosition" class="form-control custom-select">
-                            <option value="0">Choose your position</option>
-                            <option value="1">Admin</option>
-                            <option value="2">Staff</option>
-                        </select>
-                    </div>
-                    <hr class="my-4">
-                    <button class="btn btn-lg btn-primary btn-block text-uppercase" onclick="register()">Register</button>
+                    <form action="register.php" method="post">
+                        <div class="form-label-group">
+                            <label for="inputName">Name</label>
+                            <input type="name" id="inputName" class="form-control" placeholder="Name" name="uname" required>
+                        </div>
+                        <div class="form-label-group">
+                            <label for="inputEmail">Email address</label>
+                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
+                        </div>
+        
+                        <div class="form-label-group">
+                            <label for="inputPassword">Password</label>
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pass" required>
+                        </div>
+                        <div class="form-label-group mt-2">
+                            <label for="inputPosition">Position</label>
+                            <select name="position" id="inputPosition" class="form-control custom-select">
+                                <option>Choose your position</option>
+                                <option value="1">Admin</option>
+                                <option value="0">Staff</option>
+                            </select>
+                        </div>
+                        <hr class="my-4">
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                    </form>
                   </div>
                 </div>
               </div>
