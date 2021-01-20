@@ -1,0 +1,18 @@
+.home-image
+{
+    background: url("assets/restaurant.jpg");
+    height:600px;
+    scroll-behavior: smooth;
+    background-size: cover;
+}
+
+.mt-xl
+{
+    margin-top: 200px;
+    background-color: grey;
+    border-radius: 108px 49px 108px 49px;
+    -moz-border-radius: 108px 49px 108px 49px;
+    -webkit-border-radius: 108px 49px 108px 49px;
+    border: 0px solid #000000;
+    opacity: 0.9;
+}
