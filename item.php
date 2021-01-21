@@ -1,3 +1,20 @@
+<?php
+    require 'database.php';
+
+    function get_item()
+    {
+        global $db;
+        $ret = array();
+        $query = "SELECT * FROM ITEMS";
+        $sql = mysqli_query($db, $query);
+        while ($ar = mysqli_fetch_assoc($sql))
+        {
+            $ret[] = $ar;
+        }
+        return $ret;
+    }
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +34,7 @@
             <div class="jumbotron">
                 <h1 class="display-8">Item List</h1>
             </div>
-            <button type="button" class="btn btn-primary">Add Item</button>
+            <a class="btn btn-primary" role="button" href="additem.php">Add Item</a>
             <?php
                 if (isset($_SESSION['user']) && $_SESSION['user'] === "1") //admin
                 {
