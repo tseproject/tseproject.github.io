@@ -5,7 +5,7 @@
     {
         global $db;
         $ret = array();
-        $query = "SELECT * FROM ITEMS";
+        $query = "SELECT * FROM ITEM";
         $sql = mysqli_query($db, $query);
         while ($ar = mysqli_fetch_assoc($sql))
         {
@@ -49,32 +49,25 @@
             <!-- TODO: mysqli_fetch_assoc, foreach create css card, take from items -->
             <div class="row mt-2">
                 <div class="col-md-5">
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Item 1</h5>
-                            <p class="card-text">Expire Date: </p>
-                            <p class="card-text">Quantity: </p>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                        </div>
-                    </div>        
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Item 2</h5>
-                            <p class="card-text">Expire Date: </p>
-                            <p class="card-text">Quantity: </p>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                        </div>
-                    </div>        
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Item 3</h5>
-                            <p class="card-text">Expire Date: </p>
-                            <p class="card-text">Quantity: </p>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                        </div>
-                    </div>       
+                    <?php
+                        $item = get_item();
+                        foreach($item as $itemdetails)
+                        {
+                            $itemname = $itemdetails['itemname'];
+                            $itemqty = $itemdetails['itemqty'];
+                            $itemdate = $itemdetails['itemdate'];
+                    ?>
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $itemname; ?></h5>
+                                <p class="card-text">Expire Date: <?php echo $itemdate; ?></p>
+                                <p class="card-text">Quantity: <?php echo $itemqty; ?></p>
+                                <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                            </div>
+                        <?php
+                        }
+                        ?>
                 </div>
-                <div class="col-md-5">
+                <!-- <div class="col-md-5">
                     <div class="card mb-2">
                         <div class="card-body">
                             <h5 class="card-title">Item 4</h5>
@@ -99,7 +92,7 @@
                             <button type="button" class="btn btn-primary btn-sm">Edit</button>
                         </div>
                     </div>        
-                </div>
+                </div> -->
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
