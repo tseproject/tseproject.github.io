@@ -36,7 +36,7 @@
             </div>
             <a class="btn btn-primary" role="button" href="additem.php">Add Item</a>
             <?php
-                if (isset($_SESSION['user']) && $_SESSION['user'] === "1") //admin
+                if (isset($_SESSION['user']) && $_SESSION['user'] == 1) //admin
                 {
                     echo 'hi admin';
                 }

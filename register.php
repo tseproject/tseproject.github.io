@@ -20,7 +20,7 @@
             {
                 $_SESSION['user'] = 0; //staff
             }
-            // header('Location: adminpage.php');
+            $_SESSION['username'] = $uname;
             echo '<script>alert("User registered successfully!");
             </script>';
             echo '<script>window.location.href="adminpage.php";</script>';
