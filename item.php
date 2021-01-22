@@ -53,6 +53,7 @@
                         $item = get_item();
                         foreach($item as $itemdetails)
                         {
+                            $count = $itemdetails['itemid'];
                             $itemname = $itemdetails['itemname'];
                             $itemqty = $itemdetails['itemqty'];
                             $itemdate = $itemdetails['itemdate'];
