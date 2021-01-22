@@ -11,14 +11,12 @@
         
         if($insert)
         {
-            echo '<script>alert("Item added successfully!");
-            </script>';
-            echo '<script>window.location.href="item.php";</script>';
+            $_SESSION['add'] = 1;
         }
         else
         {
-            echo '<script>alert("Failed to add item!");
-            </script>';
+            $_SESSION['add'] = 0;
         }
+        echo '<script>window.location.href="item.php";</script>';
     }
 ?>

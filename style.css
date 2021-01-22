@@ -17,11 +17,7 @@
     opacity: 0.9;
 }
 
-.alert
+.alert-danger
 {
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-    display: block;
-    text-align: center;
+    background-color: aqua;
 }

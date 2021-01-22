@@ -12,12 +12,13 @@
             $_SESSION['loggedin'] = true;
             $_SESSION['user'] = $result[3];
             $_SESSION['username'] = $result[2];
+            $_SESSION['err'] = 0;
             header('Location: adminpage.php');
         }
         else
         {
-            // echo '<script>alert("Email or password error! Please re-enter!");</script>';
-            // echo '<script>window.location.href = "signin.php";</script>';
+            $_SESSION['err'] = 1;
+            echo '<script>window.location.href = "signin.php";</script>';
         }
     }
 ?>

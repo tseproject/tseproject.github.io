@@ -21,13 +21,15 @@
                 $_SESSION['user'] = 0; //staff
             }
             $_SESSION['username'] = $uname;
-            echo '<script>alert("User registered successfully!");
-            </script>';
-            echo '<script>window.location.href="adminpage.php";</script>';
+            echo "<script>alert('User registered successfully!')</script>";
+            echo "<script>window.location.href='adminpage.php'</script>";
+            
         }
         else
         {
-            echo "Error";
+            $_SESSION['reg'] = 0;
+            header('Location: signup.php');
         }
+        
     }
 ?>

@@ -15,19 +15,22 @@
         <br>
         <br>
         <br>
-        
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-              <div class="alert">
-                <strong>Incorrect Email/Password!</strong> Please re-enter stonks.
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="container" id="signin">
             <div class="row">
               <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <?php 
+                  if(isset($_SESSION['err']) && $_SESSION['err'] == 1)
+                  {
+                ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Incorrect Email/Password!</strong> Please re-enter your registered email or password.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php
+                  }
+                ?>
                 <div class="card card-signin my-5">
                   <div class="card-body">
                     <form method="post" action="auth.php">

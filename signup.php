@@ -18,6 +18,19 @@
         <div class="container" id="signin">
             <div class="row">
               <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <?php 
+                  if(isset($_SESSION['reg']) && $_SESSION['reg'] == 0)
+                  {
+                ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Account registration failed!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php
+                  }
+                ?>
                 <div class="card card-signin my-5">
                   <div class="card-body">
                     <h5 class="card-title text-center">Sign Up</h5>
