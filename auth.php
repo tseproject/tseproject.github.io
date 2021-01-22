@@ -16,8 +16,8 @@
         }
         else
         {
-            echo '<script>alert("Email or password error! Please re-enter!");</script>';
-            echo '<script>window.location.href = "signin.php";</script>';
+            // echo '<script>alert("Email or password error! Please re-enter!");</script>';
+            // echo '<script>window.location.href = "signin.php";</script>';
         }
     }
 ?>

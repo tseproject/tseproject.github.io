@@ -16,3 +16,12 @@
     border: 0px solid #000000;
     opacity: 0.9;
 }
+
+.alert
+{
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    display: block;
+    text-align: center;
+}

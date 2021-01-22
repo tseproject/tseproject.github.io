@@ -16,6 +16,15 @@
         <br>
         <br>
         
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+              <div class="alert">
+                <strong>Incorrect Email/Password!</strong> Please re-enter stonks.
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="container" id="signin">
             <div class="row">
               <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
