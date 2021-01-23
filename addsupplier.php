@@ -8,34 +8,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="AI-style.css">
 
     </head>
-    <body>
-        <?php include "header.php"?>
-        <?php
-            if (isset($_SESSION['loggedin']))
-            {?>
-                <div class="container mt-1">
-                    <div class="jumbotron">
-                        <h1 class="display-8">Admin Page</h1>
-                        <h5>Hi <?php echo $_SESSION['username'];?></h5>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Go to Items</h5>
-                        <a class="btn btn-primary btn-sm" href="item.php" role="button">GO</a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Go to Suppliers</h5>
-                        <a class="btn btn-primary btn-sm" href="supplier.php" role="button">GO</a>
-                    </div>
+    <body>  
+        <?php include 'header.php' ?>
+		<div class="additem">
+			<h1 class="heading">Add Supplier Information</h1>
+			<div class="log">			
+                <div class="add-form">
+                    <form method="post" action="addsup.php">
+                        <label class="f-label">Supplier Name</label><br>
+                        <input type="text" id="supplier-name" name="supplier-name" size="30">
+                        <br><br>
+                        <label class="f-label">Contact </label><br>
+                        <input type="text" id="supplier-contact"name="supplier-contact">
+                        <br><br>
+                        <label class="f-label">Address</label><br>
+                        <input type="text" id="supplier-address" name="supplier-address" size="68">
+                        <br><br>
+                        <button type="submit" class="btn" name="btn-submit">Submit</button>
+                    </form>
                 </div>
-
-            <?php }
-            else
-            {
-                header('Location: signin.php');
-            }
-        ?>
+			</div>
+		</div>
+        
+        
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
