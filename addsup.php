@@ -11,14 +11,12 @@
         
         if($insert)
         {
-            echo '<script>alert("Supplier info added successfully!");
-            </script>';
-            echo '<script>window.location.href="supplier.php";</script>';
+            $_SESSION['addsup'] = 1;
         }
         else
         {
-            echo '<script>alert("Failed to add supplier info! Please try again!!");
-            </script>';
+            $_SESSION['addsup'] = 0;
         }
+        echo '<script>window.location.href="supplier.php";</script>';
     }
 ?>

@@ -34,19 +34,31 @@
             <div class="jumbotron">
                 <h1 class="display-8">Supplier List</h1>
             </div>
-            <a class="btn btn-primary" role="button" href="addsupplier.php">Add Supplier Information</a>
             <?php
-                if (isset($_SESSION['user']) && $_SESSION['user'] === "1") //admin
+                if (isset($_SESSION['addsup']) && $_SESSION['addsup'] == 1) //item added
                 {
-                    echo 'hi admin';
-                }
-                else
+            ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Supplier Added!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php
+                }  
+                elseif (isset($_SESSION['addsup']) && $_SESSION['addsup'] == 0) //item added
                 {
-                    echo 'hi staff';
+            ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Supplier add failed!</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            <?php
                 }
             ?>
-
-            <!-- TODO: mysqli_fetch_assoc, foreach create css card, take from items -->
+            <a class="btn btn-primary" role="button" href="addsupplier.php">Add Supplier Information</a>
             <div class="row mt-2">
                 <div class="col-md-5">
                     <?php
