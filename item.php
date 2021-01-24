@@ -46,11 +46,33 @@
                 </div>
             <?php
                 }  
-                elseif (isset($_SESSION['add']) && $_SESSION['add'] == 0) //item added
+                elseif (isset($_SESSION['add']) && $_SESSION['add'] == 0) //item add fail
                 {
             ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Item add failed!</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            <?php
+                }
+                else if (isset($_SESSION['delitem']) && $_SESSION['delitem'] == 1) // item deleted
+                {
+            ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Item Deleted!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php        
+                }
+                else if (isset($_SESSION['delitem']) && $_SESSION['delitem'] == 1) //item delete failed
+                {
+            ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Item deletion failed!</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -75,37 +97,15 @@
                                 <p class="card-text">Expire Date: <?php echo $itemdate; ?></p>
                                 <p class="card-text">Quantity: <?php echo $itemqty; ?></p>
                                 <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                <form action="delitem.php" method="POST">
+                                    <input type="hidden" name="del_item_id" value="<?php echo ($count)?>">
+                                    <input type="submit" name="deleteitem" class="btn btn-danger btn-sm" value="Delete"></input>
+                                </form>
                             </div>
                         <?php
                         }
                         ?>
                 </div>
-                <!-- <div class="col-md-5">
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Item 4</h5>
-                            <p class="card-text">Expire Date: </p>
-                            <p class="card-text">Quantity: </p>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                        </div>
-                    </div>        
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Item 5</h5>
-                            <p class="card-text">Expire Date: </p>
-                            <p class="card-text">Quantity: </p>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                        </div>
-                    </div>        
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Item 6</h5>
-                            <p class="card-text">Expire Date: </p>
-                            <p class="card-text">Quantity: </p>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                        </div>
-                    </div>        
-                </div> -->
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -113,3 +113,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
 </html>
+<?php
+    unset($_SESSION['delitem']);
+    unset($_SESSION['add']);
+?>

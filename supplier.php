@@ -105,32 +105,6 @@
                         }
                         ?>
                 </div>
-                <!-- <div class="col-md-5">
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Item 4</h5>
-                            <p class="card-text">Expire Date: </p>
-                            <p class="card-text">Quantity: </p>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                        </div>
-                    </div>        
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Item 5</h5>
-                            <p class="card-text">Expire Date: </p>
-                            <p class="card-text">Quantity: </p>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                        </div>
-                    </div>        
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Item 6</h5>
-                            <p class="card-text">Expire Date: </p>
-                            <p class="card-text">Quantity: </p>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                        </div>
-                    </div>        
-                </div> -->
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
