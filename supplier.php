@@ -95,11 +95,17 @@
                                 <h5 class="card-title"><?php echo $Name; ?></h5>
                                 <p class="card-text">Contact: <?php echo $Contact; ?></p>
                                 <p class="card-text">Address: <?php echo $Address; ?></p>
-                                <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                                <form action="delsup.php" method="POST">
-                                    <input type="hidden" name="del_supplier_id" value="<?php echo ($supplierdetails['Supplierid'])?>">
-                                    <input type="submit" name="delete" class="btn btn-danger btn-sm" value="Delete"></input>
-                                </form>
+                                <?php if (isset($_SESSION['user']) && $_SESSION['user'] == 1)
+                                {
+                                ?>
+                                    <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                    <form action="delsup.php" method="POST">
+                                        <input type="hidden" name="del_supplier_id" value="<?php echo ($supplierdetails['Supplierid'])?>">
+                                        <input type="submit" name="delete" class="btn btn-danger btn-sm" value="Delete"></input>
+                                    </form>
+                                <?php
+                                }
+                                ?>
                             </div>
                         <?php
                         }
