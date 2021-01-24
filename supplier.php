@@ -13,7 +13,6 @@
         }
         return $ret;
     }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,7 +56,30 @@
                     </div>
             <?php
                 }
+                elseif (isset($_SESSION['delsup']) && $_SESSION['delsup'] == 1)
+                {
             ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Supplier Deleted!</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            <?php
+                }
+                elseif (isset($_SESSION['delsup']) && $_SESSION['delsup'] == 0)
+                {
+            ?>
+                    <div class="alert alert-failed alert-dismissible fade show" role="alert">
+                        <strong>Supplier Deletion Failed!</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            <?php
+                }
+            ?>
+
             <a class="btn btn-primary" role="button" href="addsupplier.php">Add Supplier Information</a>
             <div class="row mt-2">
                 <div class="col-md-5">
@@ -74,6 +96,10 @@
                                 <p class="card-text">Contact: <?php echo $Contact; ?></p>
                                 <p class="card-text">Address: <?php echo $Address; ?></p>
                                 <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                <form action="delsup.php" method="POST">
+                                    <input type="hidden" name="del_supplier_id" value="<?php echo ($supplierdetails['Supplierid'])?>">
+                                    <input type="submit" name="delete" class="btn btn-danger btn-sm" value="Delete"></input>
+                                </form>
                             </div>
                         <?php
                         }
@@ -112,3 +138,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
 </html>
+
+<?php
+    unset($_SESSION['addsup']);
+    unset($_SESSION['delsup']);
+?>
