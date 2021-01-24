@@ -16,3 +16,15 @@
     border: 0px solid #000000;
     opacity: 0.9;
 }
+
+.card-body
+{
+    background-color:#e9ecef;
+}
+
+.items
+{
+    border: 1px solid transparent;
+    border-color: #e9ecef;
+    border-radius: .3rem;
+}

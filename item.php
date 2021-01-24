@@ -84,15 +84,22 @@
             <div class="row mt-2">
                 <div class="col-md-5">
                     <?php
+                        $currdate = date("Y-m-d");
                         $item = get_item();
                         foreach($item as $itemdetails)
                         {
+                            date_default_timezone_set("Asia/Singapore");
                             $count = $itemdetails['itemid'];
                             $itemname = $itemdetails['itemname'];
                             $itemqty = $itemdetails['itemqty'];
                             $itemdate = $itemdetails['itemdate'];
                     ?>
-                            <div class="card-body">
+                            <div class="card-body items" style="<?php
+                            if(strtotime($itemdetails['itemdate']) < strtotime(date("Y-m-d")))
+                            {
+                                echo"border-color:red;";
+                            }
+                            ?>">
                                 <h5 class="card-title"><?php echo $itemname; ?></h5>
                                 <p class="card-text">Expire Date: <?php echo $itemdate; ?></p>
                                 <p class="card-text">Quantity: <?php echo $itemqty; ?></p>
@@ -102,6 +109,7 @@
                                     <input type="submit" name="deleteitem" class="btn btn-danger btn-sm" value="Delete"></input>
                                 </form>
                             </div>
+                            <br>
                         <?php
                         }
                         ?>
