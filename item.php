@@ -1,11 +1,11 @@
 <?php
     require 'database.php';
 
-    function get_supplier()
+    function get_item()
     {
         global $db;
         $ret = array();
-        $query = "SELECT * FROM SUPPLIER";
+        $query = "SELECT * FROM ITEM";
         $sql = mysqli_query($db, $query);
         while ($ar = mysqli_fetch_assoc($sql))
         {
@@ -13,6 +13,7 @@
         }
         return $ret;
     }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,47 +32,47 @@
  
         <div class="container mt-1">
             <div class="jumbotron">
-                <h1 class="display-8">Supplier List</h1>
+                <h1 class="display-8">Item List</h1>
             </div>
             <?php
-                if (isset($_SESSION['addsup']) && $_SESSION['addsup'] == 1) //item added
+                if (isset($_SESSION['add']) && $_SESSION['add'] == 1) //item added
                 {
             ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Supplier Added!</strong>
+                    <strong>Item Added!</strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             <?php
                 }  
-                elseif (isset($_SESSION['addsup']) && $_SESSION['addsup'] == 0) //item added
+                elseif (isset($_SESSION['add']) && $_SESSION['add'] == 0) //item add fail
                 {
             ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Supplier add failed!</strong>
+                        <strong>Item add failed!</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
             <?php
                 }
-                elseif (isset($_SESSION['delsup']) && $_SESSION['delsup'] == 1)
+                else if (isset($_SESSION['delitem']) && $_SESSION['delitem'] == 1) // item deleted
                 {
             ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Supplier Deleted!</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-            <?php
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Item Deleted!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php        
                 }
-                elseif (isset($_SESSION['delsup']) && $_SESSION['delsup'] == 0)
+                else if (isset($_SESSION['delitem']) && $_SESSION['delitem'] == 1) //item delete failed
                 {
             ?>
-                    <div class="alert alert-failed alert-dismissible fade show" role="alert">
-                        <strong>Supplier Deletion Failed!</strong>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Item deletion failed!</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -79,34 +80,36 @@
             <?php
                 }
             ?>
-
-            <a class="btn btn-primary" role="button" href="addsupplier.php">Add Supplier Information</a>
+            <a class="btn btn-primary" role="button" href="additem.php">Add Item</a>
             <div class="row mt-2">
                 <div class="col-md-5">
                     <?php
-                        $supplier = get_supplier();
-                        foreach($supplier as $supplierdetails)
+                        $currdate = date("Y-m-d");
+                        $item = get_item();
+                        foreach($item as $itemdetails)
                         {
-                            $Name = $supplierdetails['Name'];
-                            $Contact = $supplierdetails['Contact'];
-                            $Address = $supplierdetails['Address'];
+                            date_default_timezone_set("Asia/Singapore");
+                            $count = $itemdetails['itemid'];
+                            $itemname = $itemdetails['itemname'];
+                            $itemqty = $itemdetails['itemqty'];
+                            $itemdate = $itemdetails['itemdate'];
                     ?>
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $Name; ?></h5>
-                                <p class="card-text">Contact: <?php echo $Contact; ?></p>
-                                <p class="card-text">Address: <?php echo $Address; ?></p>
-                                <?php if (isset($_SESSION['user']) && $_SESSION['user'] == 1)
-                                {
-                                ?>
-                                    <a class="btn btn-primary btn-sm" href="editsupplier.php?Supplierid=<?php echo ($supplierdetails['Supplierid'])?>">Edit</a>
-                                    <form action="delsup.php" method="POST">
-                                        <input type="hidden" name="del_supplier_id" value="<?php echo ($supplierdetails['Supplierid'])?>">
-                                        <input type="submit" name="delete" class="btn btn-danger btn-sm" value="Delete"></input>
-                                    </form>
-                                <?php
-                                }
-                                ?>
+                            <div class="card-body items" style="<?php
+                            if(strtotime($itemdetails['itemdate']) < strtotime(date("Y-m-d")))
+                            {
+                                echo"border-color:red;";
+                            }
+                            ?>">
+                                <h5 class="card-title"><?php echo $itemname; ?></h5>
+                                <p class="card-text">Expire Date: <?php echo $itemdate; ?></p>
+                                <p class="card-text">Quantity: <?php echo $itemqty; ?></p>
+                                <a class="btn btn-primary btn-sm" href="edititem.php?itemid=<?php echo ($itemdetails['itemid'])?>">Edit</a>
+                                <form action="delitem.php" method="POST">
+                                    <input type="hidden" name="del_item_id" value="<?php echo ($count)?>">
+                                    <input type="submit" name="deleteitem" class="btn btn-danger btn-sm" value="Delete"></input>
+                                </form>
                             </div>
+                            <br>
                         <?php
                         }
                         ?>
@@ -118,8 +121,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
 </html>
-
 <?php
-    unset($_SESSION['addsup']);
-    unset($_SESSION['delsup']);
+    unset($_SESSION['delitem']);
+    unset($_SESSION['add']);
 ?>
