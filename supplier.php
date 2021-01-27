@@ -98,7 +98,7 @@
                                 <?php if (isset($_SESSION['user']) && $_SESSION['user'] == 1)
                                 {
                                 ?>
-                                    <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                    <a class="btn btn-primary btn-sm" href="editsupplier.php?Supplierid=<?php echo ($supplierdetails['Supplierid'])?>">Edit</a>
                                     <form action="delsup.php" method="POST">
                                         <input type="hidden" name="del_supplier_id" value="<?php echo ($supplierdetails['Supplierid'])?>">
                                         <input type="submit" name="delete" class="btn btn-danger btn-sm" value="Delete"></input>

@@ -103,7 +103,7 @@
                                 <h5 class="card-title"><?php echo $itemname; ?></h5>
                                 <p class="card-text">Expire Date: <?php echo $itemdate; ?></p>
                                 <p class="card-text">Quantity: <?php echo $itemqty; ?></p>
-                                <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                <a class="btn btn-primary btn-sm" href="edititem.php?itemid=<?php echo ($itemdetails['itemid'])?>">Edit</a>
                                 <form action="delitem.php" method="POST">
                                     <input type="hidden" name="del_item_id" value="<?php echo ($count)?>">
                                     <input type="submit" name="deleteitem" class="btn btn-danger btn-sm" value="Delete"></input>

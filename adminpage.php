@@ -24,6 +24,7 @@
                         <h5 class="card-title">Go to Items</h5>
                         <a class="btn btn-primary btn-sm" href="item.php" role="button">GO</a>
                     </div>
+                    <br>
                     <div class="card-body">
                         <h5 class="card-title">Go to Suppliers</h5>
                         <a class="btn btn-primary btn-sm" href="supplier.php" role="button">GO</a>
